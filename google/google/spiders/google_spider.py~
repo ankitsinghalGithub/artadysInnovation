@@ -1,0 +1,29 @@
+import scrapy
+from google.items import GoogleItem
+
+
+class google_Spider(scrapy.Spider):
+	name = "google"
+    	allowed_domains = ["www.google.fr"]
+    	start_urls = ["https://www.google.fr/search?q=vente-privee"]
+	
+	def parse(self, response):
+		#print response.body
+		titles = response.xpath('//h3[@class="r"]/a/text()')
+		urls = response.xpath('//h3[@class="r"]/a/@href')
+		descriptions = response.xpath('//span[@class="st"]/text()')
+
+		for i in range(0,len(titles)):
+			item = GoogleItem()
+			item['title'] = titles[i].extract().encode('utf8')
+			item['link'] = urls[i].extract().encode('utf8')
+			item['desc'] = descriptions[i].extract().encode('utf8')
+			print "***********************************************************aaaaaaaaaaaaaa***********************"
+			yield item
+		
+		href = response.urljoin(response.xpath('//a[@class="pn"]//@href').extract()[0])
+        	
+        	if href:
+        		print "**********************************next page...................",href
+        		url = response.urljoin(href)
+            		yield scrapy.Request(url, self.parse)

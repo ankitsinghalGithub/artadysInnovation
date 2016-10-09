@@ -1,0 +1,7 @@
+import scrapy
+
+
+class GoogleItem(scrapy.Item):
+	title = Field()
+	url = Field()
+	desc = Field()
