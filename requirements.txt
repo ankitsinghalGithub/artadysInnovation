@@ -17,6 +17,7 @@ lxml==3.6.4
 Mako==1.0.4
 MarkupSafe==0.23
 nltk==3.2.1
+oauthlib==2.0.0
 parsel==1.0.3
 pkg-resources==0.0.0
 psycopg2==2.6.2
@@ -30,11 +31,13 @@ python-editor==1.0.1
 queuelib==1.4.2
 redis==2.10.5
 requests==2.11.1
+requests-oauthlib==0.7.0
 rq==0.6.0
 Scrapy==1.1.2
 service-identity==16.0.0
 six==1.10.0
 SQLAlchemy==1.0.14
+tweepy==3.5.0
 Twisted==16.4.0
 w3lib==1.15.0
 Werkzeug==0.11.11
